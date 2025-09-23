@@ -10,9 +10,20 @@
 </head>
 <body>
     <header class=" text-black shadow-sm p-3 mb-1 bg-body rounded">
-        <div><img src="{% static 'images/wiki.png' %}" alt=""></div>
-        <h3>Wikipedia</h3>
-        <p>The free encyclopedia</p>
+        <div>
+            <img src="{% static 'images/wiki.png' %}" alt="">
+
+            <div class="d-inline-block align-middle ms-3">
+                <h4 class="">Wikipedia</h4>
+                <p><em>The free encyclopedia</em></p>
+            </div>
+                <form class="d-flex float-end p-3" role="search" action="/search" method="get">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+        </div>
+        
     </header>
 
     <div class="container-fluid">

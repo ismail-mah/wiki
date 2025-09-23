@@ -119,7 +119,7 @@ STATIC_URL = 'static/'
 
 # Add the following lines to tell Django where to find your static files:
 STATICFILES_DIRS = [
-    BASE_DIR / 'encyclopedia' / 'images',
+    BASE_DIR / 'encyclopedia' / 'static',
 ]
 
 # Default primary key field type
