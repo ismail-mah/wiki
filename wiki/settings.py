@@ -117,7 +117,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Add the following lines to tell Django where to find your static files:
+STATICFILES_DIRS = [
+    BASE_DIR / 'encyclopedia' / 'images',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+import os
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "encyclopedia", "media")
+MEDIA_URL = "/media/"

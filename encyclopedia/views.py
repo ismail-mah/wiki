@@ -1,29 +1,49 @@
-import os
+from django import forms
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 import markdown2
-from django.shortcuts import render
-from django.http import Http404
+from random import choice
+from . import util
 
-ENTRIES_DIR = os.path.join(os.path.dirname(__file__), "entries")
 
-# <-- ADD THIS function so "index" exists
+class EntryForm(forms.Form):
+    title = forms.CharField(label="Title")
+    content = forms.CharField(widget=forms.Textarea(), label="content")
+
+class EditEntry(forms.Form):
+    content = forms.CharField(widget=forms.Textarea(), label="content")
+
+
 def index(request):
-    entries = [
-        f[:-3] for f in os.listdir(ENTRIES_DIR)
-        if f.endswith(".md")
-    ]
+    try:
+        entries = util.fetch_all_pages()
+        
+    except FileNotFoundError:
+        entries = [] 
     return render(request, "encyclopedia/index.html", {
         "entries": entries
     })
 
-# This one shows a single entry
+
+# def entry(request, title):
+#     content = util.load_page(title)
+#     if content is None:
+#         return render(request, "encyclopedia/error.html", {
+#             "message": "The requested page was not found."
+#         })
+#     else:
+#         html_content = markdown2.markdown(content)
+#         return render(request, "encyclopedia/entry.html", {
+#             "title": title,
+#             "content": html_content
+#         })
+
 def entry(request, title):
-    filename = os.path.join(ENTRIES_DIR, f"{title}.md")
-    if not os.path.exists(filename):
-        raise Http404("Entry not found")
-    with open(filename, "r", encoding="utf-8") as f:
-        content = f.read()
+    content = util.get_page(title)
+    if content is None:
+        return HttpResponse("<h1>Page does not exist. </h1>", status=404)
     html_content = markdown2.markdown(content)
     return render(request, "encyclopedia/entry.html", {
         "title": title,
         "content": html_content
-    })
+    })       
