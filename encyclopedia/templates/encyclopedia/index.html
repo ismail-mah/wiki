@@ -3,27 +3,29 @@
 {% block title %} Wikipedia, the free encyclopedia {% endblock %}
 
 {% block content %}
-
     <div class="index-header">
         <h1>Welcome to<span class="header"> Wikipedia</span></h1>
         <p class="lead"><b>The</b> free encyclopedia <b>that</b> anyone can edit.</p>
     </div>
 
-    <div class="sub-header">
-        <h4>CS50 Web programming with JavaScript and Python</h4>
-    </div>
+    <div class="index-container">
     
-    <div class="showcase">
-        <h5>Project 1: Wiki</h5>
+        <div class="sub-header">
+            <h4>CS50 Web programming with JavaScript and Python</h4>
+        </div>
+        
+        <div class="showcase">
+            <h5>Project 1: Wiki</h5>
+        </div>
+        <div class="list-entries">
+            <p>List of Entries</p>
+            <ul>
+                {% for entry in entries %}
+                    <li><a href="{% url 'encyclopedia:entry' title=entry %}">{{ entry }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-    <div class="list-entries">
-        <p>List of Entries</p>
-        <ul>
-            {% for entry in entries %}
-                <li><a href="{% url 'encyclopedia:entry' title=entry %}">{{ entry }}</a></li>
-            {% endfor %}
-        </ul>
 
-    </div>
 
 {% endblock %}
