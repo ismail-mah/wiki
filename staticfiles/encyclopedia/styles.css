@@ -1,0 +1,31 @@
+/* .sidebar {
+    display: relative;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    position: fixed;
+    overflow-y: auto;
+    z-index: 1000;
+} */
+
+body {
+    background-color: #f0f8ff;
+}
+
+
+.sidebar {
+    border: 1px solid red;
+}
+main {
+    border: 1px solid blue;
+}
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}

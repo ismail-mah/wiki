@@ -3,7 +3,7 @@ import re
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
-def fetch_all_pages():
+def list_entries():
     print("📁 Attempting to list files in 'entries' folder...")
     try:
         dirs, files = default_storage.listdir("entries")
@@ -22,7 +22,7 @@ def fetch_all_pages():
 
 
 
-def store_page(name, text):
+def save_entry(name, text):
     """
     Creates or updates a wiki page with the given name and Markdown content.
     """
@@ -32,7 +32,7 @@ def store_page(name, text):
     default_storage.save(path, ContentFile(text))
 
 
-def get_page(name):
+def get_entry(name):
     """
     Loads the content of a wiki page. Returns None if the page doesn't exist.
     """

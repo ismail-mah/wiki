@@ -16,7 +16,7 @@ class EditEntry(forms.Form):
 
 def index(request):
     try:
-        entries = util.fetch_all_pages()
+        entries = util.list_entries()
         
     except FileNotFoundError:
         entries = [] 
@@ -39,7 +39,7 @@ def index(request):
 #         })
 
 def entry(request, title):
-    content = util.get_page(title)
+    content = util.get_entry(title)
     if content is None:
         return HttpResponse("<h1>Page does not exist. </h1>", status=404)
     html_content = markdown2.markdown(content)
