@@ -25,20 +25,8 @@ def index(request):
     })
 
 
-# def entry(request, title):
-#     content = util.load_page(title)
-#     if content is None:
-#         return render(request, "encyclopedia/error.html", {
-#             "message": "The requested page was not found."
-#         })
-#     else:
-#         html_content = markdown2.markdown(content)
-#         return render(request, "encyclopedia/entry.html", {
-#             "title": title,
-#             "content": html_content
-#         })
 
-def entry(request, title):
+def get_entry(request, title):
     content = util.get_entry(title)
     if content is None:
         return HttpResponse("<h1>Page does not exist. </h1>", status=404)
@@ -46,4 +34,18 @@ def entry(request, title):
     return render(request, "encyclopedia/entry.html", {
         "title": title,
         "content": html_content
-    })       
+    })
+
+def search_entry(request):
+    search_query = request.GET.get('q', '').lower()
+    all_entries = util.list_entries()
+
+    for entry in all_entries:
+        if entry.lower() == search_query:
+            return redirect('encyclopedia:get_entry', title=entry)
+
+    matching_result = [entry for entry in all_entries if search_query in entry.lower()]
+    return render(request, "encyclopedia/search.html", {
+        "results": matching_result,
+        "search_query": search_query
+    })
