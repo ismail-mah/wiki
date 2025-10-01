@@ -56,6 +56,25 @@ b {
     border: 1px solid #aaa;
 }
 
+.sub-header-entry {
+    padding: 1rem;
+    border-bottom: #aaa solid 1px;
+    text-align: center;
+}
+
+.index-container-entry {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    background-color: #fefefe;
+}
+
+.entry-content {
+    margin-top: 3rem;
+    line-height: 1.6;
+}
+
 .showcase, .list-entries {
     padding: 1rem;
 }

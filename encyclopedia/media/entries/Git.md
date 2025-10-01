@@ -1,0 +1,1 @@
+Git is the world's most popular distributed version control system (DVCS), designed to manage changes to source code or any collection of files with speed and efficiency. It is the foundation of nearly all modern collaborative software development.

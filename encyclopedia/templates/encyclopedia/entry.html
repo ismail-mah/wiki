@@ -3,9 +3,12 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <!-- <h1>{{ title }}</h1> -->
-    <div>
-        {{ content|safe }}
+    <div class="index-container-entry">
+        <h1 class="sub-header-entry">{{ title }}</h1>
+        <div class="entry-content">
+            {{ content|safe }}
+        </div>
+        <a href="{% url 'encyclopedia:index' %}">Back to Index</a>
+
     </div>
-    <a href="{% url 'encyclopedia:index' %}">Back to Index</a>
 {% endblock %}
