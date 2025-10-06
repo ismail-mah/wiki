@@ -15,40 +15,42 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar --> 
-            <nav class="col-12 col-md-3 col-lg-2 bg-light sidebar py-3">
-                <div class="container-fluid">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="{% static 'images/wiki.png' %}" alt="">
-                        <div class="logo-text ms-3">
-                            <h4 class="mb-0">Wikipedia</h4>
-                            <p class="mb-0"><em>The free encyclopedia</em></p>
-                        </div>
-                    </div>  
-                    <hr>
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <div class="sidebar-header">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="{% static 'images/wiki.png' %}" alt="">
+                            <div class="logo-text ms-3">
+                                <h4 class="mb-0">Wikipedia</h4>
+                                <p class="mb-0"><em>The free encyclopedia</em></p>
+                            </div>
+                        </div>  
+                        <hr>
+                    </div>
+                    
+                    <!-- Search form -->
+                    <form class="d-flex mb-3 px-3" role="search" action="{% url 'encyclopedia:search_entry' %}" method="get">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
+                    <!-- Navigation links -->
+                    <ul class="nav flex-column px-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'encyclopedia:create_entry' %}">Create New Entry</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'encyclopedia:random_entry' %}">Random Page</a>
+                        </li>
+                    </ul>
                 </div>
-                <!-- Search form -->
-                <form class="d-flex mb-3" role="search" action="{% url 'encyclopedia:search_entry' %}" method="get">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'encyclopedia:create_entry' %}">Create New Entry</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/random">Random Page</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/search">Search</a>
-                    </li> -->
-                </ul>
             </nav>
 
             <!-- Main content -->
-            <main class="col-12 col-md-9 col-lg-10 px-3 py-4">
+            <main class="col-md-9 col-lg-10 ms-sm-auto px-md-4 main-content">
                 <div class="index-header">
                     <h1>Welcome to<span class="header"> Wikipedia</span></h1>
                     <p class="lead"><b>The</b> free encyclopedia <b>that</b> anyone can edit.</p>

@@ -10,7 +10,7 @@ class EntryForm(forms.Form):
     title = forms.CharField(label="Title")
     content = forms.CharField(widget=forms.Textarea(), label="content")
 
-class EditEntry(forms.Form):
+class EditEntryForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea(), label="content")
 
 
@@ -68,3 +68,26 @@ def create_entry(request):
     return render(request, "encyclopedia/create.html", {
         "form": form
     })
+
+def edit_entry(request, title):
+    if request.method == "POST":
+        form = EditEntryForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            return redirect('encyclopedia:get_entry', title=title)
+    else:
+        existing_content = util.get_entry(title)
+        form = EditEntryForm(initial={"content": existing_content})
+    return render(request, "encyclopedia/edit.html", {
+        "form": form, 
+        "title": title
+    })
+
+
+def random_entry(request):
+    all_entries = util.list_entries()
+    if not all_entries:
+        return HttpResponse("<h1>No entries available.</h1>", status=404)
+    random_title = choice(all_entries)
+    return redirect('encyclopedia:get_entry', title=random_title)

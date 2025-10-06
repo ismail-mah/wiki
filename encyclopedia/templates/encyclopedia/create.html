@@ -10,6 +10,9 @@
         <form action="{% url 'encyclopedia:create_entry' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
+            {% if error %}
+                <p class="alert alert-danger w-20" role="alert">{{ error }}</p>
+            {% endif %}
             <button type="submit">Submit</button>
         </form>
     </div>

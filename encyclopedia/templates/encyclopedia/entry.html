@@ -1,14 +1,16 @@
 {% extends "encyclopedia/layout.html" %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ title }} - Wikipedia{% endblock %}
 
 {% block content %}
     <div class="index-container-entry">
         <h1 class="sub-header-entry">{{ title }}</h1>
+        <a class="edit-btn btn btn-outline-secondary" href="{% url 'encyclopedia:edit_entry' title=title %}">Edit entry</a>
         <div class="entry-content">
             {{ content|safe }}
         </div>
-        <a href="{% url 'encyclopedia:index' %}">Back to Index</a>
-
+        
+        
     </div>
+    <a class="mt-2 btn btn-primary" href="{% url 'encyclopedia:index' %}">Back to Index</a>
 {% endblock %}
