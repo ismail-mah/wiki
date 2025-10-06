@@ -131,7 +131,7 @@ b {
 .sub-header-entry {
     padding: 1rem;
     border-bottom: #aaa solid 1px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .index-container-entry {
@@ -162,6 +162,11 @@ li a {
     float: right;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.edit-btn:hover {
+    text-decoration: underline;
 }
 
 .card {

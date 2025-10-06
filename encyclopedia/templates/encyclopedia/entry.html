@@ -4,8 +4,8 @@
 
 {% block content %}
     <div class="index-container-entry">
+        <a class="edit-btn" href="{% url 'encyclopedia:edit_entry' title=title %}">Edit entry</a>
         <h1 class="sub-header-entry">{{ title }}</h1>
-        <a class="edit-btn btn btn-outline-secondary" href="{% url 'encyclopedia:edit_entry' title=title %}">Edit entry</a>
         <div class="entry-content">
             {{ content|safe }}
         </div>
