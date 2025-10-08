@@ -7,7 +7,7 @@
 {% block content %}
     <div class="index-container">
         <h1 class="sub-header">Create a New Entry</h1>
-        <form action="{% url 'encyclopedia:create_entry' %}" method="post">
+        <form action="{% url 'create_entry' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             {% if error %}

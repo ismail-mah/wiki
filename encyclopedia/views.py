@@ -42,7 +42,7 @@ def search_entry(request):
 
     for entry in all_entries:
         if entry.lower() == search_query:
-            return redirect('encyclopedia:get_entry', title=entry)
+            return redirect('get_entry', title=entry)
 
     matching_result = [entry for entry in all_entries if search_query in entry.lower()]
     return render(request, "encyclopedia/search.html", {
@@ -75,7 +75,7 @@ def edit_entry(request, title):
         if form.is_valid():
             content = form.cleaned_data["content"]
             util.save_entry(title, content)
-            return redirect('encyclopedia:get_entry', title=title)
+            return redirect('get_entry', title=title)
     else:
         existing_content = util.get_entry(title)
         form = EditEntryForm(initial={"content": existing_content})
@@ -90,4 +90,4 @@ def random_entry(request):
     if not all_entries:
         return HttpResponse("<h1>No entries available.</h1>", status=404)
     random_title = choice(all_entries)
-    return redirect('encyclopedia:get_entry', title=random_title)
+    return redirect('get_entry', title=random_title)

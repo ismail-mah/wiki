@@ -29,7 +29,7 @@
                     </div>
                     
                     <!-- Search form -->
-                    <form class="d-flex mb-3 px-3" role="search" action="{% url 'encyclopedia:search_entry' %}" method="get">
+                    <form class="d-flex mb-3 px-3" role="search" action="{% url 'search_entry' %}" method="get">
                         <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
@@ -40,10 +40,10 @@
                             <a class="nav-link active" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'encyclopedia:create_entry' %}">Create New Entry</a>
+                            <a class="nav-link" href="{% url 'create_entry' %}">Create New Entry</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'encyclopedia:random_entry' %}">Random Page</a>
+                            <a class="nav-link" href="{% url 'random_entry' %}">Random Page</a>
                         </li>
                     </ul>
                 </div>
