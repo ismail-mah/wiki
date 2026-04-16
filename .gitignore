@@ -1,6 +1,55 @@
+# ============================
+#  Django & Python
+# ============================
+
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
-db.sqlite3
+*.pdb
+*.pkl
+*.so
 
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# ============================
+#  Django specific
+# ============================
+
+db.sqlite3
+*.sqlite3
+*.log
+local_settings.py
+settings_local.py
+media/
+staticfiles/
+static/
+
+# ============================
+#  IDE / Editor
+# ============================
+
+.vscode/
+.idea/
+*.iml
+
+# ============================
+#  OS files
+# ============================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ============================
+#  Other
+# ============================
+
+build/
+dist/
+*.egg-info/
+.cache/
