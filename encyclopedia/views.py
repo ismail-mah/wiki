@@ -62,7 +62,7 @@ def create_entry(request):
                     "error": "An entry with this title already exists."
                 })
             util.save_entry(title, content)
-            return redirect('encyclopedia:get_entry', title=title)
+            return redirect('get_entry', title=title)
     else:
         form = EntryForm()
     return render(request, "encyclopedia/create.html", {
