@@ -4,13 +4,44 @@
 
 {% block content %}
     <div class="index-container-entry">
-        <a class="edit-btn" href="{% url 'edit_entry' title=title %}">Edit entry</a>
+        <div class="d-flex justify-content-end mb-2">
+            <a class="btn btn-sm btn-outline-primary me-2" href="{% url 'edit_entry' title=title %}">
+                Edit entry
+            </a>
+            <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Delete
+            </button>
+        </div>
         <h1 class="sub-header-entry">{{ title }}</h1>
         <div class="entry-content">
             {{ content|safe }}
         </div>
-        
-        
     </div>
     <a class="mt-2 btn btn-primary" href="{% url 'index' %}">Back to Index</a>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Delete “{{ title }}”?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This action <strong>cannot be undone</strong>.</p>
+                    {% if content %}
+                    <div class="p-3 bg-light border rounded small text-muted">
+                        {{ content|striptags|truncatewords:20 }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form method="POST" action="{% url 'delete_entry' title=title %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

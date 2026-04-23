@@ -1,5 +1,6 @@
 from django import forms
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.http import HttpResponse
 import markdown2
 from random import choice
@@ -93,6 +94,19 @@ def edit_entry(request, title):
         "form": form, 
         "title": title
     })
+
+
+def delete_entry(request, title):
+    if request.method == "POST":
+        deleted = util.delete_entry(title)
+
+        if deleted:
+            messages.success(request, f"Entry '{title}' has been deleted.")
+            return redirect('index')
+        
+        return render(request, "encyclopedia/error.html", {
+            "title": title
+        }, status=404)
 
 
 def random_entry(request):

@@ -38,4 +38,13 @@ def get_entry(name):
     except FileNotFoundError:
         return None
 
-
+def delete_entry(name):
+    """
+    Deletes a wiki page removing is Markdown file.
+    Returns True if deleted, False if the file did not exist.
+    """
+    path = f"entries/{name}.md"
+    if default_storage.exists(path):
+        default_storage.delete(path)
+        return True
+    return False
