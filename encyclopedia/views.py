@@ -29,8 +29,12 @@ def index(request):
 def get_entry(request, title):
     content = util.get_entry(title)
     if content is None:
-        return HttpResponse("<h1>Page does not exist. </h1>", status=404)
+        return render(request, "encyclopedia/error.html", {
+            "title": title
+        },status=404)
+    
     html_content = markdown2.markdown(content)
+
     return render(request, "encyclopedia/entry.html", {
         "title": title,
         "content": html_content
@@ -70,6 +74,13 @@ def create_entry(request):
     })
 
 def edit_entry(request, title):
+    existing_content = util.get_entry(title)
+
+    if existing_content is None:
+        return render(request, "encyclopedia/error.html", {
+            "title": title
+        }, status=404)
+    
     if request.method == "POST":
         form = EditEntryForm(request.POST)
         if form.is_valid():
@@ -77,7 +88,6 @@ def edit_entry(request, title):
             util.save_entry(title, content)
             return redirect('get_entry', title=title)
     else:
-        existing_content = util.get_entry(title)
         form = EditEntryForm(initial={"content": existing_content})
     return render(request, "encyclopedia/edit.html", {
         "form": form, 

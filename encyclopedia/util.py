@@ -4,21 +4,16 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
 def list_entries():
-    print("📁 Attempting to list files in 'entries' folder...")
     try:
         dirs, files = default_storage.listdir("entries")
-        print("✅ Files found:", files)
-    except Exception as e:
-        print("❌ Error accessing entries folder:", e)
+    except Exception:
         return []
-
-    titles = [
+    return sorted ([
         re.sub(r"\.md$", "", file)
         for file in files
         if file.endswith(".md")
-    ]
-    print("📄 Filtered titles:", titles)
-    return sorted(titles)
+    ])
+    
 
 
 
@@ -42,3 +37,5 @@ def get_entry(name):
             return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+
