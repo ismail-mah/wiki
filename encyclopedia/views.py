@@ -61,12 +61,13 @@ def create_entry(request):
         if form.is_valid():
             title = form.cleaned_data["title"]
             content = form.cleaned_data["content"]
-            if util.get_entry(title) is not None:
+            if util.get_entry(title.lower()) is not None:
                 return render(request, "encyclopedia/create.html", {
                     "form": form,
                     "error": "An entry with this title already exists."
                 })
             util.save_entry(title, content)
+            messages.success(request, f"Entry '{title}' has been created.")
             return redirect('get_entry', title=title)
     else:
         form = EntryForm()
