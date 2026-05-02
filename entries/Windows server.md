@@ -1,1 +1,0 @@
-Windows server is great tool for alot of companies.

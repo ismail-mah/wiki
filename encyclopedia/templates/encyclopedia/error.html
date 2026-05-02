@@ -1,14 +1,16 @@
 {% extends "encyclopedia/layout.html" %}
 
-{% block title %}Entry Not Found - Wikipedia{% endblock %}
+{% block title %}Entry - Wikipedia{% endblock %}
 
 {% block content %}
     <div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
         <div class="card p-4 shadow-sm text-center" style="max-width: 500px; width: 100%;">
             <h1 class="mb-3 text-muted">
-                <i class="bi bi-exclamation-triangle-fill"></i>Entry Not Found
+                <i class="bi bi-exclamation-triangle-fill"></i>Error
             </h1>
-            <p class="mb-3 text-danger">The requested entry for "{{ title }}" was not found.</p>
+            <p class="mb-3 text-danger">
+                {{ message }}
+            </p>
             <a class="btn btn-primary mt-3" href="{% url 'index' %}">Back to Index</a>
 
         </div>

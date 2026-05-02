@@ -31,7 +31,7 @@ def get_entry(request, title):
     content = util.get_entry(title)
     if content is None:
         return render(request, "encyclopedia/error.html", {
-            "title": title
+            "message": f"The entry '{title}' was not found."
         },status=404)
     
     html_content = markdown2.markdown(content)
@@ -80,7 +80,7 @@ def edit_entry(request, title):
 
     if existing_content is None:
         return render(request, "encyclopedia/error.html", {
-            "title": title
+            "message": f"The entry '{title}' does not exist."
         }, status=404)
     
     if request.method == "POST":
@@ -88,6 +88,7 @@ def edit_entry(request, title):
         if form.is_valid():
             content = form.cleaned_data["content"]
             util.save_entry(title, content)
+            messages.success(request, f"Entry '{title}' has been updated.")
             return redirect('get_entry', title=title)
     else:
         form = EditEntryForm(initial={"content": existing_content})
@@ -106,13 +107,15 @@ def delete_entry(request, title):
             return redirect('index')
         
         return render(request, "encyclopedia/error.html", {
-            "title": title
+            "message": f"Entry '{title}' could not be deleted because it does not exist."
         }, status=404)
 
 
 def random_entry(request):
     all_entries = util.list_entries()
     if not all_entries:
-        return HttpResponse("<h1>No entries available.</h1>", status=404)
+        return render(request, "encyclopedia/error.html", {
+            "message": "No entries available."
+        },status=404)
     random_title = choice(all_entries)
     return redirect('get_entry', title=random_title)

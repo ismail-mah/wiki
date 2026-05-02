@@ -1,1 +1,17 @@
-JavaScript is a programming language used to create dynamic and interactive effects on web pages..
+JavaScript (JS)[a] is a programming language and core technology of the Web, alongside [HTML]( /wiki/HTML) and [CSS]( /wiki/CSS). It was created by Brendan Eich in 1995.[6] As of 2025, the overwhelming majority of websites (98.9%) uses JavaScript for client side webpage behavior.[10]
+
+
+
+Web browsers have a dedicated JavaScript engine that executes the client code. These engines are also utilized in some servers and a variety of apps. The most popular runtime system for non-browser usage is Node.js.[11]
+
+
+
+JavaScript is a high-level, often just-in-time-compiled language that conforms to the ECMAScript standard.[12] It has dynamic typing, prototype-based object-orientation, and first-class functions. It is multi-paradigm, supporting event-driven, functional, and imperative programming styles. It has application programming interfaces (APIs) for working with text, dates, regular expressions, standard data structures, and the Document Object Model (DOM).
+
+
+
+The ECMAScript standard does not include any input/output (I/O), such as networking, storage, or graphics facilities. In practice, the web browser or other runtime system provides JavaScript APIs for I/O.
+
+
+
+Although Java and JavaScript are similar in name and syntax, the two languages are distinct and differ greatly in design.

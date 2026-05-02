@@ -16,11 +16,15 @@
         </div>
         <div class="list-entries">
             <p>List of Entries</p>
-            <ul>
-                {% for entry in entries %}
-                    <li><a href="{% url 'get_entry' title=entry %}">{{ entry }}</a></li>
-                {% endfor %}
-            </ul>
+            {% if entries %}
+                <ul>
+                    {% for entry in entries %}
+                        <li><a href="{% url 'get_entry' title=entry %}">{{ entry }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted fst-italic">No entries available.</p>
+            {% endif %}
         </div>
     </div>
 

@@ -1,1 +1,0 @@
-tijaabo, tijaabo kale.

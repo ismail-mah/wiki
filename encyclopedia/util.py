@@ -24,7 +24,7 @@ def save_entry(name, text):
     path = f"entries/{name}.md"
     if default_storage.exists(path):
         default_storage.delete(path)
-    default_storage.save(path, ContentFile(text))
+    default_storage.save(path, ContentFile(text.encode("utf-8")))
 
 
 def get_entry(name):
@@ -33,8 +33,12 @@ def get_entry(name):
     """
     file_path = f"entries/{name}.md"
     try:
-        with default_storage.open(file_path) as f:
-            return f.read().decode("utf-8")
+        with default_storage.open(file_path, "rb") as f:
+            raw = f.read()
+            try:
+                return raw.decode("utf-8")
+            except UnicodeDecodeError:
+                return raw.decode("cp1252")
     except FileNotFoundError:
         return None
 
