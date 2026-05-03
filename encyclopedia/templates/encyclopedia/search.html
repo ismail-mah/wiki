@@ -4,18 +4,24 @@
 
 {% block content %}
 <br>
-    <h1>Search results for {{ search_query }}</h1>
+    <h1>Search results for "<span class="text-primary">{{ search_query }}</span>"</h1>
 
     {% if search_query %}
         {% if results %}
-            <p>Did you mean  one of these entries?</p>
+            <p class="text-muted">Found {{ results|length }} matching entr{{ results|length|pluralize:"y,ies"}}:</p>
             <ul>
                 {% for result in results %}
-                    <li><a href="{% url 'get_entry' title=result %}">{{ result }}</a></li>
+                    <li>
+                        <a href="{% url 'get_entry' title=result %}">
+                        {{ result }}
+                        </a>
+                    </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="text-danger">No entries found matching your search query.</p>
+            <p class="text-danger mt-3">
+                No entries found matching "<strong>{{ search_query }}</strong>".
+            </p>
         {% endif %}
     {% else %}
         <p class="text-warning">Please enter a search query.</p>

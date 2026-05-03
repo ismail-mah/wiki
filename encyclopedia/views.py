@@ -14,6 +14,12 @@ class EntryForm(forms.Form):
 class EditEntryForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea(), label="content")
 
+# Helper function to render error page with a message
+def render_error(request, message, status=404):
+    return render(request, "encyclopedia/error.html", {
+        "message": message,
+        "status": status
+    }, status=status)
 
 def index(request):
     try:
@@ -30,9 +36,7 @@ def index(request):
 def get_entry(request, title):
     content = util.get_entry(title)
     if content is None:
-        return render(request, "encyclopedia/error.html", {
-            "message": f"The entry '{title}' was not found."
-        },status=404)
+        return render_error(request, f"The entry '{title}' was not found.", 404)
     
     html_content = markdown2.markdown(content)
 
@@ -49,7 +53,13 @@ def search_entry(request):
         if entry.lower() == search_query:
             return redirect('get_entry', title=entry)
 
-    matching_result = [entry for entry in all_entries if search_query in entry.lower()]
+    matching_result = []
+    for entry in all_entries:
+      content = util.get_entry(entry).lower()
+      
+      if search_query in entry.lower() or search_query in content:
+            matching_result.append(entry)
+            
     return render(request, "encyclopedia/search.html", {
         "results": matching_result,
         "search_query": search_query
@@ -79,9 +89,7 @@ def edit_entry(request, title):
     existing_content = util.get_entry(title)
 
     if existing_content is None:
-        return render(request, "encyclopedia/error.html", {
-            "message": f"The entry '{title}' does not exist."
-        }, status=404)
+        return render_error(request, f"The entry '{title}' does not exist.", 404)
     
     if request.method == "POST":
         form = EditEntryForm(request.POST)
@@ -106,16 +114,12 @@ def delete_entry(request, title):
             messages.success(request, f"Entry '{title}' has been deleted.")
             return redirect('index')
         
-        return render(request, "encyclopedia/error.html", {
-            "message": f"Entry '{title}' could not be deleted because it does not exist."
-        }, status=404)
+        return render_error(request, f"Entry '{title}' could not be deleted because it does not exist.",404)
 
 
 def random_entry(request):
     all_entries = util.list_entries()
     if not all_entries:
-        return render(request, "encyclopedia/error.html", {
-            "message": "No entries available."
-        },status=404)
+        return render_error(request, "No entries available.",404)
     random_title = choice(all_entries)
     return redirect('get_entry', title=random_title)
