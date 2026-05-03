@@ -1,7 +1,6 @@
 from django import forms
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import HttpResponse
 import markdown2
 from random import choice
 from . import util
@@ -59,7 +58,7 @@ def search_entry(request):
       
       if search_query in entry.lower() or search_query in content:
             matching_result.append(entry)
-            
+
     return render(request, "encyclopedia/search.html", {
         "results": matching_result,
         "search_query": search_query
