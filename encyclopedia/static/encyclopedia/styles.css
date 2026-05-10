@@ -1,3 +1,6 @@
+/* ----------------------------------------------------
+   GLOBAL RESET
+---------------------------------------------------- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,40 +9,73 @@
 
 html,  body {
     font-family: Arial, sans-serif;
-    
 }
 
 body {
     margin: 0;
     padding: 0;
     color: #333;
-     display: flex;
+    display: flex;
     flex-direction: column;
 }
 
+/* ----------------------------------------------------
+   TYPOGRAPHY
+---------------------------------------------------- */
 .logo-text p {
     font-size: 0.8rem;
     color: #555;
     font-style: italic;
     line-height: 1.2;
-
 }
 
-/* Sidebar styling */
+.wiki-header {
+    color: #3366cc;
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
 
+.wiki-header-link {
+    color: #3366cc;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.wiki-header-link:hover {
+    text-decoration: underline;
+}
+
+.header {
+    color: #6a60b0;
+}
+
+.lead {
+    font-size: 95%;
+    color: #3366cc;
+    font-weight: 600;
+}
+
+.main-content b {
+    color: #101418;
+}
+
+/* ----------------------------------------------------
+   SIDEBAR
+---------------------------------------------------- */
 .sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     padding: 0;
-    z-index: 100; /* Stay on top */
+    z-index: 100;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.sidebar-sticky{
+.sidebar-sticky {
     position: relative;
     top: 0;
     height: calc(100vh);
@@ -67,28 +103,35 @@ body {
     color: #198754;
 }
 
-
-/* Main content */
-
+/* ----------------------------------------------------
+   MAIN CONTENT
+---------------------------------------------------- */
 .main-content {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
 
+.main-content li a {
+    text-decoration: none;
+}
+
+/* ----------------------------------------------------
+   FOOTER (Wikipedia-style)
+---------------------------------------------------- */
 .wikipedia-footer {
     background-color: #f8f9fa;
     border-top: 1px solid #a2a9b1;
     color: #54595d;
     font-size: 0.875rem;
-    
 }
 
 .wikipedia-footer .nav-link {
     color: #54595d;
-
-   
 }
 
+.wikipedia-footer .nav-link:hover {
+    text-decoration: underline;
+}
 
 @media (max-width: 767.98px) {
     .wikipedia-footer {
@@ -96,102 +139,69 @@ body {
     }
 }
 
+/* ----------------------------------------------------
+   INDEX PAGE
+---------------------------------------------------- */
 
-/* Responsive */
-
-@media (max-width: 767.98px) {
-    .sidebar {
-        position: relative;
-        height: auto;
-        box-shadow: none;
-    }
-
-    .sidebar-sticky {
-        height: auto;
-        padding-bottom: 1rem;
-    }
+.welcome-banner {
+    background-color: #eaf3fb;
 }
 
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
-    }
+.welcome-banner-title {
+    font-family: 'Linux Libertine', Georgia, serif;
 }
 
-/* Index styling */
-
-.index-container {
-    margin-top: 1rem;
-    padding: 1rem;
-    border: 1px solid #aaa;
-    border-radius: 2px;
-    background-color: #f0f0f0;
-}
-
-.index-header {
-    background-color: #f9f9f9;
-    text-align: center ;
-    color: #101418;
-    border: 1px solid #aaa;
-    border-radius: 2px;
-    padding: 0.5rem 0.5rem;
-    font-size: inherit;
-}
-
-
-.header {
-    color: #6a60b0;
-}
-
-
-.lead {
-    font-size: 95%;
+.welcome-text {
     color: #3366cc;
-    font-weight: 600;
 }
 
-.main-content b {
-    color: #101418;
+.main-content-header {
+    background-color: #cee0f2;
+    border-bottom: 1px solid #a2a9b1;
 }
 
-.sub-header {
-    padding: 1rem;
-    border-radius: 2px;
-    background-color: #cef2e0;
-    border-color: #a3bfb1;
-    border: 1px solid #aaa;
+.main-content-box {
+    font-family: Georgia, serif;
 }
 
-.sub-header-entry {
-    padding: 1rem;
-    border-bottom: #aaa solid 1px;
-    /* text-align: center; */
+.line-break {
+    border-color: #a2a9b1;
 }
 
-.index-container-entry {
-    margin-top: 1rem;
-    padding: 1rem;
-    border: 1px solid #aaa;
-    border-radius: 2px;
-    background-color: #fefefe;
+.table-content {
+    background-color: #f8f9fa;
+    display: inline-block;
+    min-width: 200px;
 }
 
-.entry-content {
-    margin-top: 3rem;
-    line-height: 1.6;
-}
-
-.showcase, .list-entries {
-    padding: 1rem;
-}
-
-.main-content li a {
+.entry-link {
+    color: #3366cc;
     text-decoration: none;
-    
 }
 
-/* Edit form style */
+.entry-link:hover {
+    text-decoration: underline;
+}
 
+.right-sidebar {
+    background-color: #cee0f2;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.table-data {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.second-right-sidebar {
+    background-color: #cef2e0;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+
+/* ----------------------------------------------------
+   EDIT PAGE / FORMS
+---------------------------------------------------- */
 .edit-btn {
     float: right;
     margin-top: 1rem;
@@ -203,15 +213,6 @@ body {
     text-decoration: underline;
 }
 
-.card {
-    transition: box-shadow 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1) !important;
-}
-
-
 form p label {
     font-weight: 600;
     color: #495057;
@@ -219,7 +220,7 @@ form p label {
     display: block;
 }
 
-form p input[type="text"], 
+form p input[type="text"],
 form p textarea {
     width: 100%;
     padding: 0.75rem;
@@ -242,6 +243,9 @@ form p textarea {
     resize: vertical;
 }
 
+/* ----------------------------------------------------
+   BUTTONS
+---------------------------------------------------- */
 .btn {
     transition: all 0.2s ease;
     font-weight: 500;
@@ -255,24 +259,55 @@ form p textarea {
     transform: translateY(0);
 }
 
-
-@media (max-width: 576px) {
-  .sidebar {
-    padding: 1.5rem !important;
-  }
-
-  .display-5 {
-    font-size: 1.75rem;
-  }
-  .btn-lg {
-    width: 100%;
-  }
+/* ----------------------------------------------------
+   CARDS
+---------------------------------------------------- */
+.card {
+    transition: box-shadow 0.3s ease;
 }
 
+.card:hover {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1) !important;
+}
 
+/* ----------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------- */
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: relative;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .sidebar-sticky {
+        height: auto;
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        padding: 1.5rem !important;
+    }
+
+    .display-5 {
+        font-size: 1.75rem;
+    }
+
+    .btn-lg {
+        width: 100%;
+    }
+}
 
 @media (min-width: 768px) {
-  .sidebar {
-    top: 0;
-  }
+    .sidebar {
+        top: 0;
+    }
 }

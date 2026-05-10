@@ -6,10 +6,10 @@
     <div class="index-container-entry">
         <div class="d-flex justify-content-end mb-2">
             <a class="btn btn-sm btn-outline-primary me-2" href="{% url 'edit_entry' title=title %}">
-                Edit entry
+                <i class="bi bi-pencil-square"></i> Edit
             </a>
             <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                Delete
+               <i class="bi bi-trash3"></i> Delete
             </button>
         </div>
         <h1 class="sub-header-entry">{{ title }}</h1>

@@ -49,13 +49,21 @@
                     </ul>
                 </div>
             </nav>
+            
 
             <!-- Main content -->
             <div class="col-md-9 col-lg-10 ms-sm-auto d-flex flex-column min-vh-100 p-0">
                 <main class="px-md-4 main-content flex-grow-1">
-                    <div class="index-header">
-                        <h1>Welcome to<span class="header"> Wikipedia</span></h1>
-                        <p class="lead"><b>The</b> free encyclopedia <b>that</b> anyone can edit.</p>
+
+                    <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center">
+                        <span class="wiki-header">
+                            Wikipedia, the free encyclopedia
+                        </span>
+                        <span class="text-muted small">
+                            <a href="{% url 'create_entry' %}" class="wiki-header-link">
+                                Contribute
+                            </a>
+                        </span>
                     </div>
     
                     {% if messages %}

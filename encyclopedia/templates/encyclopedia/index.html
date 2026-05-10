@@ -3,30 +3,118 @@
 {% block title %} Wikipedia, the free encyclopedia {% endblock %}
 
 {% block content %}
-    
 
-    <div class="index-container">
-    
-        <div class="sub-header">
-            <h4>CS50 Web programming with JavaScript and Python</h4>
-        </div>
-        
-        <div class="showcase">
-            <h5>Project 1: Wiki</h5>
-        </div>
-        <div class="list-entries">
-            <p>List of Entries</p>
-            {% if entries %}
-                <ul>
-                    {% for entry in entries %}
-                        <li><a href="{% url 'get_entry' title=entry %}">{{ entry }}</a></li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p class="text-muted fst-italic">No entries available.</p>
-            {% endif %}
+    {% comment %} Welcome Banner {% endcomment %}
+    <div class="welcome-banner card mb-4 border">
+        <div class="card-body text-center py-4">
+            <h2 class="welcome-banner-title card-title mb-1">
+                Welcome to <span class="welcome-text">Wikipedia</span>
+            </h2>
+            <p class="text-muted mb-3">The free encyclopedia that anyone can edit.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <span class="badge bg-secondary">{{ entries|length }} entries</span>
+                <span class="badge bg-secondary">Free Content</span>
+                <span class="badge bg-secondary">Open Editing</span>
+                
+            </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            {% comment %} Main Content {% endcomment %}
+            <div class="card mb-4 border">
+                <div class="card-header py-2 main-content-header">
+                    <h5 class="mb-0 main-content-box">
+                        📚 CS50 Web Programming with JavaScript and Python
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted small mb-3">
+                        This project is part of the CS50 Web Programming with JavaScript and Python course. <br>
+                        It is a simple wiki application that allows users to create, edit, and view encyclopedia entries. <br>
+                        The project is built using Django, a high-level Python web framework, 
+                        and it demonstrates the use of various web development concepts such as 
+                        templates, forms, and URL routing.
+                    </p>
+                    <hr class="line-break">
+                    {% comment %} Table section {% endcomment %}
+                    <div class="p-3 mb-3 border table-content">
+                        <p class="fw-bold mb-2 small">Contents</p>
+                        {% if entries %}
+                            <ol class="mb-0 small">
+                                {% for entry in entries  %}
+                                <li>
+                                    <a class="entry-link" href="{% url 'get_entry' title=entry %}">
+                                        {{ entry }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ol>
+                            {% else %}
+                                <p class="text-muted fst-italic mb-0">No entries available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Sidebar infobox right side {% endcomment %}
+        <div class="col-lg-4">
+            <div class="card border mb-4">
+                <div class="card-header py-2 text-center right-sidebar">
+                    <strong class="small"><i class="bi bi-list"></i> Quick Navigation</strong>
+                </div>
+                <div class="card-body py-2">
+                    <table class="table table-sm table-borderless mb-0 small">
+                        <tbody>
+                            {% if entries %}
+                                {% for entry in entries %}
+                                    <tr>
+                                        <td>
+                                            <a href="{% url 'get_entry' title=entry %}" class="table-data">
+                                                {{ entry }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td class="text-muted fst-talic">
+                                            No entries available.
+                                        </td>
+                                    </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card border mb-4">
+                <div class="card-header py-2 second-right-sidebar">
+                    <strong class="small">About This Project</strong>
+                </div>
+                <div class="card-body small">
+                    <p class="mb-1">
+                        This wiki currently contains
+                        <strong>{{ entries|length }}</strong>
+                        {% if entries|length == 1 %}
+                            article
+                            {% else %}
+                            articles
+                        {% endif %}
+                    </p>
+                    <p class="mb-0 text-muted">
+                        Anyone can create, edit and delete entries using <i class="bi bi-markdown">Markdown.</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
 {% endblock %}
