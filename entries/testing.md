@@ -3,6 +3,6 @@ Markdown Guide
 ## Heading 2	H2 title
 **Bold**	Bold
 *italic*	Italic
-[text](/https://www.cs50.net)	link
+[text](https://www.cs50.net)	link
 - item	list item
 `code`	inline code
