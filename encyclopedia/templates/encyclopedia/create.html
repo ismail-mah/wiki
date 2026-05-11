@@ -5,15 +5,112 @@
 {% endblock %}
 
 {% block content %}
-    <div class="index-container">
-        <h1 class="sub-header">Create a New Entry</h1>
-        <form action="{% url 'create_entry' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if error %}
-                <p class="alert alert-danger w-20" role="alert">{{ error }}</p>
-            {% endif %}
-            <button type="submit">Submit</button>
-        </form>
+
+    <div class="border-bottom pb-2 mb-4">
+        <h4 class="create-page-title">
+            Creating a new entry
+        </h4>
     </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border">
+                <div class="card-header py-2 create-page-header">
+                    <strong class="small">📝 New Entry</strong>
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                        <div class="alert alert-danger small py-2" role="alert">
+                            <i class="bi bi-exclamation-triangle me-1"></i>{{ error }}
+                        </div>
+                    {% endif %}
+
+                    <form action="{% url 'create_entry' %}" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="id_title" class="form-label fw-semibold small">Title</label>
+                            <input type="text" 
+                                    name="title" 
+                                    id="id_title" 
+                                    class="form-control form-control-sm" 
+                                    placeholder="Enter the title of the new entry"
+                                    value="{{ form.title.value|default_if_none:'' }}" required>
+                            {% if form.title.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.title.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% comment %} Content field {% endcomment %}
+                        <div class="mb-3">
+                            <label for="id_content" class="form-label fw-semibold small">Content
+                                <span class="text-muted fw-normal">(Markdown supported)</span>
+                            </label>
+                            <textarea name="content" 
+                                      id="id_content" 
+                                      class="form-control form-control-sm" 
+                                      placeholder="Enter the content of the new entry">{{ form.content.value|default_if_none:'' }}
+                            </textarea>
+                            {% if form.content.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ form.content.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% comment %} Button {% endcomment %}
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="bi bi-check-lg me-1"></i> Save Entry
+                            </button>
+                            <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-x-lg me-1"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Help box {% endcomment %}
+        <div class="col-lg-4">
+            <div class="card border mb-3">
+                <div class="card-header py-2 create-page-card-header">
+                    <strong class="small"><i class="bi bi-book"></i> Markdown Guide</strong>
+                </div>
+                <div class="card-body small">
+                    <table class="table table-sm table-borderless mb-0">
+                        <tbody>
+                            <tr><td><code># Heading 1</code></td><td class="text-muted">H1 title</td></tr>
+                            <tr><td><code>## Heading 2</code></td><td class="text-muted">H2 title</td></tr>
+                            <tr><td><code>**Bold**</code></td><td class="text-muted"><strong>Bold</strong></td></tr>
+                            <tr><td><code>*italic*</code></td><td class="text-muted"><em>Italic</em></td></tr>
+                            <tr><td><code>[text](/https://www.cs50.net)</code></td><td class="text-muted">link</td></tr>
+                            <tr><td><code>- item</code></td><td class="text-muted">list item</td></tr>
+                            <tr><td><code>`code`</code></td><td class="text-muted">inline code</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card border">
+                <div class="card-header py-2 create-second-card">
+                    <strong class="small"><i class="bi bi-info-circle"></i> Tips for Creating a Great Entry</strong>
+                </div>
+                <div class="card-body small text-muted">
+                    <ul class="mb-0 ps-3">
+                        <li class="mb-1">Use a clear, descriptive title.</li>
+                        <li class="mb-1">Each title must be unique.</li>
+                        <li class="mb-1">Start with a short introduction paragraph.</li>
+                        <li class="mb-1">Use headings to organize sections.</li>
+                        <li class="mb-1">Include relevant links to other entries or sources.</li>
+                        <li class="mb-1">Preview your entry before saving to check formatting.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+   
 {% endblock %}

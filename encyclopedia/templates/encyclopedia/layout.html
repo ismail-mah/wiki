@@ -20,11 +20,14 @@
                 <div class="sidebar-sticky">
                     <div class="sidebar-header">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="{% static 'images/wiki.png' %}" alt="">
-                            <div class="logo-text ms-3">
-                                <h4 class="mb-0">Wikipedia</h4>
-                                <p class="mb-0"><em>The free encyclopedia</em></p>
-                            </div>
+                            <a href="/" class="text-decoration-none text-dark d-flex align-items-center mb-3">
+                                <img src="{% static 'images/wiki.png' %}" alt="">
+                                <div class="logo-text ms-3">
+                                    <h4 class="mb-0">Wikipedia</h4>
+                                    <p class="mb-0"><em>The free encyclopedia</em></p>
+                                </div>
+
+                            </a>
                         </div>  
                         <hr>
                     </div>
@@ -38,13 +41,13 @@
                     <!-- Navigation links -->
                     <ul class="nav flex-column px-3">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link active" href="/"><i class="bi bi-house"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'create_entry' %}">Create New Entry</a>
+                            <a class="nav-link" href="{% url 'create_entry' %}"><i class="bi bi-plus-lg"></i> Create New Entry</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'random_entry' %}">Random Page</a>
+                            <a class="nav-link" href="{% url 'random_entry' %}"><i class="bi bi-shuffle"></i> Random Page</a>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +64,7 @@
                         </span>
                         <span class="text-muted small">
                             <a href="{% url 'create_entry' %}" class="wiki-header-link">
-                                Contribute
+                               <i class="bi bi-plus-lg"></i>Contribute
                             </a>
                         </span>
                     </div>
