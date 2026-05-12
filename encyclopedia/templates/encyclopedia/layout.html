@@ -55,14 +55,14 @@
             
 
             <!-- Main content -->
-            <div class="col-md-9 col-lg-10 ms-sm-auto d-flex flex-column min-vh-100 p-0">
+            <div class=" d-flex flex-column  p-0 main-content-wrapper">
                 <main class="px-md-4 main-content flex-grow-1">
 
-                    <div class="border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center">
+                    <div class="border-bottom pb-2 mb-3 px-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <span class="wiki-header">
                             Wikipedia, the free encyclopedia
                         </span>
-                        <span class="text-muted small">
+                        <span class="text-muted small d-none d-md-inline">
                             <a href="{% url 'create_entry' %}" class="wiki-header-link">
                                <i class="bi bi-plus-lg"></i>Contribute
                             </a>

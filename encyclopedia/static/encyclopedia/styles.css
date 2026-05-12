@@ -9,6 +9,8 @@
 
 html,  body {
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -109,6 +111,10 @@ body {
 .main-content {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+
 }
 
 .main-content li a {
@@ -286,11 +292,6 @@ form p textarea {
     }
 }
 
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
-    }
-}
 
 @media (max-width: 576px) {
     .sidebar {
@@ -309,5 +310,22 @@ form p textarea {
 @media (min-width: 768px) {
     .sidebar {
         top: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .main-content-wrapper {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+    }
+    .sidebar {
+        width: 250px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .main-content-wrapper {
+        margin-left: 0;
+        width: 100%;
     }
 }
