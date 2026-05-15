@@ -3,21 +3,34 @@
 {% block title %}{{ title }} - Wikipedia{% endblock %}
 
 {% block content %}
-    <div class="index-container-entry">
-        <div class="d-flex justify-content-end mb-2">
-            <a class="btn btn-sm btn-outline-primary me-2" href="{% url 'edit_entry' title=title %}">
-                <i class="bi bi-pencil-square"></i> Edit
-            </a>
-            <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-               <i class="bi bi-trash3"></i> Delete
-            </button>
+    <div class="container-fluid entry-page py-3">
+        <h1 class="fw-normal m-0">{{ title }}</h1>
+        <hr class="mr-1 mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <p class="text-muted mb-0">Article</p>
+            <div class="text-end small mb-1">
+                <a class="text-primary me-3" href="{% url 'edit_entry' title=title %}">
+                     Edit
+                </a>
+                <a class="text-danger" role="button" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                   Delete
+                </a>
+            </div>
         </div>
-        <h1 class="sub-header-entry">{{ title }}</h1>
-        <div class="entry-content">
+
+
+        <hr class="mt-1 mb-4">
+        <p class="text-muted mb-4 small">From Wikipedia, the free encyclopedia</p>
+        <div class="fs-6 lh-lg wiki-article">
             {{ content|safe }}
         </div>
     </div>
-    <a class="mt-2 btn btn-primary" href="{% url 'index' %}">Back to Index</a>
+    <div class="mt-4">
+        <a class="text-primary small" href="{% url 'index' %}">
+           ← Back to Index
+        </a>
+
+    </div>
 
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

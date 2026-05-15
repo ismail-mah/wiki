@@ -239,6 +239,58 @@ form p textarea {
     border-bottom: 1px solid #a2a9b1;
 }
 
+
+/* ----------------------------------------------------
+   ENTRY PAGE
+---------------------------------------------------- */
+
+
+/* Main article text */
+.wiki-article {
+    font-size: 1rem;         
+    color: #202122;           
+    max-width: 900px;         
+}
+
+/* Wikipedia-style section headings */
+.wiki-article h2 {
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 4px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.wiki-article h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* Paragraph spacing */
+.wiki-article p {
+    margin-bottom: 1rem;
+}
+
+/* Links inside article */
+.wiki-article a {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.wiki-article a:hover {
+    text-decoration: underline;
+}
+
+
+.entry-page {
+    max-width: 960px;
+    margin-left: 0;
+    padding-left: 1.5rem;
+}
+
 /* ----------------------------------------------------
    CREATE PAGE
 ---------------------------------------------------- */
@@ -315,3 +367,4 @@ form p textarea {
         top: 0;
     }
 }
+
