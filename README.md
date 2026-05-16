@@ -24,7 +24,7 @@ You can create, edit, delete, and search encyclopedia entries. Entries are writt
 Clone the repo and navigate into it:
 
 ```bash
-git clone https://github.com/your-username/wiki.git
+git clone https://github.com/ismail-mah/wiki.git
 cd wiki
 ```
 
