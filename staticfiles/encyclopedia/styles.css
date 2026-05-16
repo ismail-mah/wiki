@@ -1,31 +1,370 @@
-/* .sidebar {
-    display: relative;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    width: 260px;
-    height: 100%;
-    background-color: #f4f4f4;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    position: fixed;
-    overflow-y: auto;
-    z-index: 1000;
-} */
+/* ----------------------------------------------------
+   GLOBAL RESET
+---------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    max-width: 100%;
+    color: #333;
+}
 
 body {
-    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
 }
 
+/* ----------------------------------------------------
+   TYPOGRAPHY
+---------------------------------------------------- */
+.logo-text p {
+    font-size: 0.8rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.2;
+}
 
+.wiki-header {
+    color: #3366cc;
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+.wiki-header-link {
+    color: #3366cc;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.wiki-header-link:hover {
+    text-decoration: underline;
+}
+
+.header {
+    color: #6a60b0;
+}
+
+.lead {
+    font-size: 95%;
+    color: #3366cc;
+    font-weight: 600;
+}
+
+.main-content b {
+    color: #101418;
+}
+
+/* ----------------------------------------------------
+   SIDEBAR
+---------------------------------------------------- */
 .sidebar {
-    border: 1px solid red;
+    position: sticky;
+    top: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
-main {
-    border: 1px solid blue;
+
+.sidebar-header {
+    padding: 0 1rem;
 }
-.container {
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+    padding: 0.5rem 1rem;
+}
+
+.sidebar .nav-link:hover {
+    color: #198754;
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.sidebar .nav-link:active {
+    color: #198754;
+}
+
+/* ----------------------------------------------------
+   MAIN CONTENT
+---------------------------------------------------- */
+.main-content {
+    padding: 1.5rem 1rem;
+    max-width: 100%;
+}
+
+.main-content li a {
+    text-decoration: none;
+}
+
+/* ----------------------------------------------------
+   FOOTER
+---------------------------------------------------- */
+.wikipedia-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #a2a9b1;
+    color: #54595d;
+    font-size: 0.875rem;
+}
+
+.wikipedia-footer .nav-link {
+    color: #54595d;
+}
+
+.wikipedia-footer .nav-link:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------------
+   CARDS
+---------------------------------------------------- */
+.card {
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ----------------------------------------------------
+   BUTTONS
+---------------------------------------------------- */
+.btn {
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* ----------------------------------------------------
+   FORMS
+---------------------------------------------------- */
+form p label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+form p input[type="text"],
+form p textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+form p input[type="text"]:focus,
+form p textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    outline: 0;
+}
+
+form p textarea {
+    min-height: 300px;
+    font-family: 'Courier New', Courier, monospace;
+    resize: vertical;
+}
+
+/* ----------------------------------------------------
+   INDEX PAGE
+---------------------------------------------------- */
+.welcome-banner {
+    background-color: #eaf3fb;
+}
+
+.welcome-banner-title {
+    font-family: 'Linux Libertine', Georgia, serif;
+}
+
+.welcome-text {
+    color: #3366cc;
+}
+
+.main-content-header {
+    background-color: #cee0f2;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.main-content-box {
+    font-family: Georgia, serif;
+}
+
+.line-break {
+    border-color: #a2a9b1;
+}
+
+.table-content {
+    background-color: #f8f9fa;
+    display: inline-block;
+    min-width: 200px;
+}
+
+.entry-link {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.entry-link:hover {
+    text-decoration: underline;
+}
+
+.right-sidebar {
+    background-color: #cee0f2;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.table-data {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.second-right-sidebar {
+    background-color: #cef2e0;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+
+/* ----------------------------------------------------
+   ENTRY PAGE
+---------------------------------------------------- */
+
+
+/* Main article text */
+.wiki-article {
+    font-size: 1rem;         
+    color: #202122;           
+    max-width: 900px;         
+}
+
+/* Wikipedia-style section headings */
+.wiki-article h2 {
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 4px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.wiki-article h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* Paragraph spacing */
+.wiki-article p {
+    margin-bottom: 1rem;
+}
+
+/* Links inside article */
+.wiki-article a {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.wiki-article a:hover {
+    text-decoration: underline;
+}
+
+
+.entry-page {
     max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
+    margin-left: 0;
+    padding-left: 1.5rem;
 }
+
+/* ----------------------------------------------------
+   CREATE PAGE
+---------------------------------------------------- */
+.create-page-title {
+    font-family: Georgia, serif;
+    font-weight: normal;
+}
+
+.create-page-header {
+    background-color: #cee0f2;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.create-page-card-header {
+    background-color: #cef2e0;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.create-second-card {
+    background-color: #eaf3fb;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+/* ----------------------------------------------------
+   EDIT PAGE
+---------------------------------------------------- */
+.edit-btn {
+    float: right;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.edit-btn:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------- */
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: relative;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .sidebar-sticky {
+        height: auto;
+        padding-bottom: 1rem;
+    }
+
+    .wikipedia-footer {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        padding: 1.5rem !important;
+    }
+
+    .display-5 {
+        font-size: 1.75rem;
+    }
+
+    .btn-lg {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        top: 0;
+    }
+}
+
