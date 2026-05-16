@@ -1,12 +1,3 @@
-Good call if you don’t have proper screenshots yet — a broken screenshots section looks worse than none.
-
-Here is your **clean A-grade README without screenshots**, still portfolio-ready:
-
----
-
-# ⭐ Final Clean README (CS50 + Portfolio Ready)
-
-````md id="r7kq1a"
 # CS50 Wiki
 
 🔗 Live Demo: https://wiki-production-5c77.up.railway.app/
