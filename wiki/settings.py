@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
-    "https://wiki-production-5c77.up.railway.app/",
+    "wiki-production-5c77.up.railway.app/",
     "localhost",
     "127.0.0.1"
 ]
