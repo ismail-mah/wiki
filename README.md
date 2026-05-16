@@ -1,5 +1,7 @@
 # CS50 Wiki
 
+[Live Demo](https://wiki-production-5c77.up.railway.app/)
+
 A simple Wikipedia-like encyclopedia built with Django. This is Project 1 of CS50 Web Programming with Python and JavaScript.
 
 ---
